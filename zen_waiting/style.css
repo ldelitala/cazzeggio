@@ -1,0 +1,276 @@
+/*
+* overflow serve a fare in modo che il wrapper non sfori il bordo
+* display: grid: applica un layout basato su griglia all'elemento e ai suoi figli.
+* place-items: center; posiziona il wrapper al centro
+*/
+
+body {
+    width: 100 vw;
+    height: 100 vh;
+    margin: 0px;
+    overflow: hidden;
+    background-color: rgb(10 10 10);
+    display: grid;
+    place-items: center;
+}
+
+/*
+diamo al wrapper un ratio ugugale al 'perfect retio'
+lo rendiamo largo il 90 percento rispetto allo schermo
+impostiamo la posizione a relative, così poi possiamo regolare la posizione dei figli con absolute
+*/
+
+#wrapper {
+    aspect-ratio: 1.618;
+    width: 90vmin;
+    position: relative;
+}
+
+/*
+1)  transition: left, top, height, width, border-radius; serve ad impostare un animazione a tutti questi tipi di transizione
+
+2)  transition-timing-function è una proprietà CSS utilizzata per definire la curva di transizione tra due stati di un elemento 
+    durante un'animazione CSS. La proprietà ease-in-out è uno dei valori predefiniti per questa proprietà e indica una curva di 
+    transizione che inizia lentamente, accelera nel mezzo dell'animazione e poi rallenta gradualmente fino alla fine.
+*/
+#wrapper>.shape {
+    height: 30%;
+    width: 30%;
+    background-color: rgba(255 255 255 /5%);
+    position: absolute;
+    transition: left, top, height, width, border-radius;
+    transition-duration: 750ms;
+    transition-timing-function: ease-in-out;
+}
+
+/* imposto i colori */
+
+#wrapper>.shape:nth-child(1) {
+    background-color: #8ecae6;
+}
+
+#wrapper>.shape:nth-child(2) {
+    background-color: #219ebc;
+}
+
+#wrapper>.shape:nth-child(3) {
+    background-color: #023047;
+}
+
+#wrapper>.shape:nth-child(4) {
+    background-color: #ffb703;
+}
+
+#wrapper>.shape:nth-child(5) {
+    background-color: #fb8500;
+}
+
+#wrapper>.shape:nth-child(6) {
+    background-color: #606c38;
+}
+
+#wrapper>.shape:nth-child(7) {
+    background-color: #e63946;
+}
+
+
+/* imposto i tipi di roundness delle figure*/
+#wrapper[data-roundness="1"]>.shape {
+    border-radius: 6rem;
+}
+
+#wrapper[data-roundness="2"]>.shape {
+    border-radius: 0rem;
+}
+
+#wrapper[data-roundness="1"] > .shape {   
+    border-radius: 6rem; 
+  }
+  
+  #wrapper[data-roundness="2"] > .shape {  
+    border-radius: 0rem;
+  }
+  
+  #wrapper[data-roundness="3"] > .shape {  
+    border-radius: 30rem;
+  }
+  
+  #wrapper[data-roundness="4"] > .shape:nth-child(1) {  
+    border-bottom-left-radius: 10rem;
+  }
+  
+  #wrapper[data-roundness="4"] > .shape:nth-child(2) {  
+    border-radius: 20rem;
+  }
+  
+  #wrapper[data-roundness="4"] > .shape:nth-child(3) {  
+    border-top-right-radius: 12rem;
+  }
+  
+  #wrapper[data-roundness="4"] > .shape:nth-child(4) {  
+    border-top-right-radius: 10rem;
+    border-bottom-right-radius: 10rem;
+  }
+  
+  #wrapper[data-roundness="4"] > .shape:nth-child(5) {  
+    border-bottom-left-radius: 10rem;
+  }
+  
+  #wrapper[data-roundness="4"] > .shape:nth-child(6) {  
+    border-top-left-radius: 16rem;
+  }
+  
+  #wrapper[data-roundness="4"] > .shape:nth-child(7) {  
+    border-top-left-radius: 10rem;
+  }
+  
+
+
+/* imposto le possibili posizioni e forme delle figure */ 
+#wrapper[data-configuration="1"] > .shape:nth-child(1) {  
+    left: 0%;
+    top: 0%;
+    height: 50%;
+    width: 20%;
+  }
+  
+  #wrapper[data-configuration="1"] > .shape:nth-child(2) {  
+    left: 20%;
+    top: 0%;
+    height: 50%;
+    width: 30%;
+  }
+  
+  #wrapper[data-configuration="1"] > .shape:nth-child(3) {  
+    left: 50%;
+    top: 0%;
+    height: 100%;
+    width: 50%;
+  }
+  
+  #wrapper[data-configuration="1"] > .shape:nth-child(4) {  
+    left: 0%;
+    top: 50%;
+    height: 50%;
+    width: 30%;
+  }
+  
+  #wrapper[data-configuration="1"] > .shape:nth-child(5) {  
+    left: 30%;
+    top: 50%;
+    height: 50%;
+    width: 20%;
+  }
+  
+  #wrapper[data-configuration="1"] > .shape:nth-child(6) {  
+    left: 70%;
+    top: 50%;
+    height: 50%;
+    width: 30%;
+  }
+  
+  #wrapper[data-configuration="1"] > .shape:nth-child(7) {  
+    left: 85%;
+    top: 75%;
+    height: 25%;
+    width: 15%;
+  }
+  
+  #wrapper[data-configuration="2"] > .shape:nth-child(1) {
+    left: 25%;
+    top: 20%;
+    height: 80%;
+    width: 15%;
+  }
+  
+  #wrapper[data-configuration="2"] > .shape:nth-child(2) {  
+    left: 40%;
+    top: 20%;
+    height: 50%;
+    width: 10%;
+  }
+  
+  #wrapper[data-configuration="2"] > .shape:nth-child(3) {  
+    left: 50%;
+    top: 0%;
+    height: 100%;
+    width: 25%;
+  }
+  
+  #wrapper[data-configuration="2"] > .shape:nth-child(4) {  
+    left: 0%;
+    top: 0%;
+    height: 50%;
+    width: 10%;
+  }
+  
+  #wrapper[data-configuration="2"] > .shape:nth-child(5) {  
+    left: 10%;
+    top: 0%;
+    height: 70%;
+    width: 15%;
+  }
+  
+  #wrapper[data-configuration="2"] > .shape:nth-child(6) {  
+    left: 75%;
+    top: 10%;
+    height: 80%;
+    width: 15%;
+  }
+  
+  #wrapper[data-configuration="2"] > .shape:nth-child(7) {  
+    left: 90%;
+    top: 40%;
+    height: 60%;
+    width: 10%;
+  }
+  
+  #wrapper[data-configuration="3"] > .shape:nth-child(1) {
+    left: 0%;
+    top: 16.5%;
+    height: 32%;
+    width: 20%;
+  }
+  
+  #wrapper[data-configuration="3"] > .shape:nth-child(2) {  
+    left: 20%;
+    top: 2.7%;
+    height: 55%;
+    width: 34%;
+  }
+  
+  #wrapper[data-configuration="3"] > .shape:nth-child(3) {  
+    left: 38%;
+    top: 0%;
+    height: 100%;
+    width: 62%;
+  }
+  
+  #wrapper[data-configuration="3"] > .shape:nth-child(4) {  
+    left: 0%;
+    top: 47.3%;
+    height: 55%;
+    width: 34%;
+  }
+  
+  #wrapper[data-configuration="3"] > .shape:nth-child(5) {   
+    left: 34%;
+    top: 56.4%;
+    height: 32%;
+    width: 20%;
+  }
+  
+  #wrapper[data-configuration="3"] > .shape:nth-child(6) {  
+    left: 66%;
+    top: 45%;
+    height: 55%;
+    width: 34%;
+  }
+  
+  #wrapper[data-configuration="3"] > .shape:nth-child(7) {  
+    left: 80%;
+    top: 68%;
+    height: 32%;
+    width: 20%;
+  }
+  
