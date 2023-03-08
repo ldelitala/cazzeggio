@@ -1,0 +1,99 @@
+/* *salvo i colori qui */
+:root {
+    --border: rgb(3, 169, 244);
+    --g1: rgb(98, 0, 234);
+    --g2: rgb(236, 64, 122);
+    --g3: rgb(253, 216, 53);
+}
+
+
+body {
+    height: 100vh;
+    margin: 0px;
+    padding: 0px;
+    display: grid;
+    place-items: center;
+    background-color: black;
+}
+
+/** creo il bordo */
+.card {
+    aspect-ratio: 1/1.6;
+    cursor: pointer;
+    border: 0.5vmin solid var(--border);
+    position: relative;
+    width: 56vmin;
+}
+
+/* * setttando la posizione come assoluta, posizioniamo poi l'elemento rispetto alla classe padre, ovvero.class*/
+.card:before {
+    background: linear-gradient(130deg,
+            transparent 0% 33%,
+            var(--g1) 66%,
+            var(--g2) 83.5%,
+            var(--g3) 100%);
+    content: "";
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    left: 0px;
+    top: 0px;
+    background-size: 300% 300%;
+    background-position: 0% 0%;
+    transition: background-position 350ms ease, transform 350ms ease;
+    z-index: 1;
+}
+
+.card:hover:before {
+    background-position: 100% 100%;
+    transform: scale(1.04, 1.02);
+}
+
+.card-content {
+    width: calc(100% - 10vmin);
+    height: calc(100% - 10vmin);
+    padding: 5vmin;
+    background: radial-gradient(rgba(255, 255, 255, 0.2) 8%, transparent 8%);
+    background-position: 0% 0%;
+    background-size: 5vmin 5vmin;
+    transition: background-position 350ms ease;
+    position: relative;
+    z-index: 2;
+}
+
+.card:hover>.card-content {
+    background-position: -10% 0%;
+}
+
+.card-content>.title,
+.sub-title {
+    color: white;
+    font-family: "Anek Latin", sans-serif;
+    font-weight: 400;
+    margin: 0px;
+}
+
+.card-content>.title {
+    font-size: 5vmin;
+}
+
+.card-content>.sub-title {
+    font-size: 3vmin;
+    margin-top: 2vmin;
+}
+
+.sub-title-words {
+    display: inline-block;
+    margin: 0vmin 0.3vmin;
+    position: relative;
+    transform: translateY(40%);
+    transition: none;
+    opacity: 0;
+}
+
+.card:hover>.card-content>.sub-title>.sub-title-words {
+    transform: translateY(0%);
+    transition: opacity 0ms, transform 200ms cubic-bezier(.90, .06, .15, .90);
+    opacity: 1;
+}
+
